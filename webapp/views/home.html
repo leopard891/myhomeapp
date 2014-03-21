@@ -1,0 +1,242 @@
+<!DOCTYPE html> <html>
+<head>
+	<meta charset="utf-8">
+<title>Title</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/style/jquery.mobile-1.3.2.min.css" /> -->
+
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.css" />
+	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>
+	
+
+
+    <style>
+	   a:link, a:visited, a:hover, a:active { text-decoration:none; }
+	   .ui-block-a, .ui-block-b { height: 100px; position: relative; }
+	   .ui-grid-a { text-align: center; }
+	   .icon-label { color: #000; display: block; font-size:12px; }
+	   .icon-springboard { position: absolute; bottom: 0; width: 100%; }
+    </style>
+
+</head>
+
+<body>
+<div data-role="page" id="main">
+	<div data-role="header" data-position="fixed">
+		<h1>Home Automation with Arduino</h1>
+	</div>
+	<div data-role="content">
+		<ul data-role="listview" data-inset="true">
+			<li data-role="list-divider">Menu</li>
+			<li><a href="#controlling"><img src="/config/style/images/glyphicons_044_keys.png" class="ui-li-icon">Controlling</a></li>
+			<li><a href="#monitoring"><img src="/config/style/images/glyphicons_041_charts.png" class="ui-li-icon">Monitoring</a></li>
+		</ul>
+	</div>
+	<div data-role="footer" data-position="fixed">
+    </div>
+</div>
+
+<div data-role=page id="controlling" data-add-back-btn = true>
+    	<div data-role="header" data-position="fixed">
+    		<a href="#main" data-icon="arrow-l">Back</a>
+    		<h1>Electricity Control</h1>
+    	</div>
+    	<div datarole="content">
+    		<div class="ui-grid-a"> 
+            	<div class="ui-block-a">
+                	<div class="icon-springboard">
+                    	<a href="#" >
+							<img src="./style/images/glyphicons_050_link.png" alt="Room 1">
+							<span class="icon-label">Lampu</span>
+								<select name="kontrol1" id="listrik1" data-role="slider">
+									<option value="1">Off</option>
+									<option value="2">On</option>
+								</select>
+						</a>
+					</div>
+				</div>        
+                        
+                <div class="ui-block-b">
+					<div class="icon-springboard">
+						<a href="#"> <img src="./style/images/glyphicons_050_link.png" alt="Room 2"> <span class="icon-label">Coffe Maker</span> </a>
+							<select name="kontrol2" id="listrik2" data-role="slider">
+								<option value="3">Off</option>
+								<option value="4">On</option>
+							</select>
+					</div>
+				</div>
+
+				<div class="ui-block-a">
+					<div style="position: absolute; bottom: 0; width:100%;">
+						<a href="#"> <img src="./style/images/glyphicons_050_link.png" alt="Room 3"> <span class="icon-label">Others</span> </a>
+							<select name="kontrol3" id="listrik3" data-role="slider">
+								<option value="5">Off</option>
+								<option value="6">On</option>
+							</select>
+					</div>
+				</div>
+
+				<div class="ui-block-b">
+					<div style="position: absolute; bottom: 0; width:100%;">
+						<a href="#"> <img src="./style/images/glyphicons_050_link.png" alt="Room 4"> <span class="icon-label">Others2</span> </a>
+							<select name="kontrol4" id="listrik4" data-role="slider">
+								<option value="7">Off</option>
+								<option value="8">On</option>
+							</select>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+<div data-role=page id="monitoring" data-add-back-btn = true>
+    	<div data-role="header">
+    		<a href="#main" data-icon="arrow-l">Back</a>
+    		<h1>Monitoring</h1>
+    	</div>
+    	<div data-role="content">
+	    	<ul data-role="listview" data-inset="true">
+				<li data-role="list-divider">Menu</li>
+				<li><a href="#camera"><img src="./style/images/glyphicons_044_keys.png" class="ui-li-icon">Camera</a></li>
+				<li><a href="#video"><img src="./style/images/glyphicons_041_charts.png" class="ui-li-icon">Video</a></li>
+				<li><a href="#alarm"><img src="./style/images/glyphicons_041_charts.png" class="ui-li-icon">alarm</a></li>
+			</ul>
+		</div>
+</div>
+
+<div data-role=page id="camera" data-add-back-btn=true>
+	<div data-role="header">
+		<a href="#monitoring" data-icon="arrow-l">Back</a>
+		<h1>Camera</h1>
+	</div>
+	<div data-role="content">
+		<ul data-role="listview" data-inset="true">
+			<li data-role="list-divider">Live Security Camera</li>
+			
+			<video id="video"></video>
+			<button id="startbutton">Take photo</button>
+			<canvas id="canvas"></canvas>
+			<img src="http://placekitten.com/g/320/261" id="photo" alt="photo">
+			
+		</ul>
+	</div>
+
+</div>
+
+<div data-role=page id="video" data-add-back-btn=true>
+	<div data-role="header">
+		<a href="#monitoring" data-icon="arrow-l">Back</a>
+		<h1>Video Recorded</h1>
+	</div>
+	<div data-role="content">
+		<ul data-role="listview" data-inset="true">
+			<li data-role="list-divider">Library Video</li>
+		</ul>
+	</div>
+
+</div>
+
+<div data-role=page id="alarm" data-add-back-btn=true>
+	<div data-role="header">
+		<a href="#monitoring" data-icon="arrow-l">Back</a>
+		<h1>Alarm System</h1>
+	</div>
+	<div data-role="content">
+		<ul data-role="listview" data-inset="true">
+			<li data-role="list-divider">Turn It On</li>
+		</ul>
+	</div>
+
+</div>
+
+
+	
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+
+	/*controlling section*/
+		var iosocket = io.connect('http://localhost:8080');
+
+		/*socket.on('serial', function(data){
+			var kondisi = data.listrikStatus;
+			console.log('data dari arduino: ' + kondisi);
+
+			if (kondisi == '1'){
+				//button secara otomatis pindah ke value 1 = off
+			}
+
+			else if (kondisi == '2'){
+				//button secara otomatis pindah ke value 2 = on
+			}
+
+			else if (kondisi == '3'){
+				//button secara otomatis pindah ke value 3 = off
+			}
+
+			else if (kondisi == '4'){
+				//button secara otomatis pindah ke value 4 = on
+			}
+
+			else if (kondisi == '5'){
+				//button secara otomatis pindah ke value 5 = off
+			}
+			
+			else if (kondisi == '6'){
+				//button secara otomatis pindah ke value 6 = on
+			}
+
+			else if (kondisi == '7'){
+				//button secara otomatis pindah ke value 7 = off
+			}
+
+			else (kondisi == '8'){
+				//button secara otomatis pindah ke value 8 = on
+			}
+		});*/
+
+		$('#listrik1').on('change', function (){
+			var value1 = $('#listrik1').val();
+			console.log('value door1 = ' + value1);
+
+			//sebarkan ke socket
+			iosocket.emit('button', {lampstatus:value1});
+		});
+
+		$('#listrik2').on('change', function (){
+			var value2 = $('#listrik2').val() ;
+			console.log('value door2 = ' + value2);
+
+			//sebarkan ke socket
+			iosocket.emit('button', {lampstatus:value2});
+		});
+
+		$('#listrik3').on('change', function (){
+			var value3 = $('#listrik3').val();
+			console.log('value door3 = ' + value3);
+
+			//sebarkan ke socket
+			iosocket.emit('button', {lampstatus:value3});
+		});
+
+		$('#listrik4').on('change', function (){
+			var value4 = $('#listrik4').val();
+			console.log('value door4 = ' + value4);
+
+			//sebarkan ke socket
+			iosocket.emit('button', {lampstatus:value4});
+		});
+
+
+	</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
