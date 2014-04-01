@@ -1,8 +1,8 @@
 //LED Control on/off
-int togglePin1 = 7;
-int togglePin2 = 8;
-int togglePin3 = 9;
-int togglePin4 = A0;
+int togglePin1 = A0;
+int togglePin2 = A1;
+int togglePin3 = A2;
+int togglePin4 = A3;
 char dataIn;
 int previousState1 = 0;
 int previousState2 = 0;
@@ -10,7 +10,7 @@ int previousState3 = 0;
 int previousState4 = 0;
 
 //PIR Sensor
-int pirPin = 2;
+int pirPin = 8;
 int minSecsBetweenEmails = 10; // 1 min
 long lastSend = -minSecsBetweenEmails * 1000l;
 
@@ -38,9 +38,9 @@ long now = millis();
     {
       Serial.println("tunda");
     }
-    //delay(5000);
+    delay(5000);
   }
-  delay(5000);
+  //delay(5000);
   
   
   
@@ -48,14 +48,14 @@ long now = millis();
   // MENERIMA data dari node dan menuliskan ke dalam string
   if (Serial.available() > 0){
     dataIn = Serial.read();
-
-    if (dataIn == '2'){
-      digitalWrite(togglePin1, HIGH);
-      //delay(10);
+    Serial.flush();
+    if (dataIn == '1'){
+      digitalWrite(togglePin1, LOW);
+      delay(10);
     }
     
-    else if (dataIn == '1'){
-      digitalWrite(togglePin1, LOW);
+    else if (dataIn == '2'){
+      digitalWrite(togglePin1, HIGH);
       delay(10);
     }
     
@@ -90,6 +90,8 @@ long now = millis();
     }
     
   }
+  
+  
   
   //------notifikasi lampu 1---------
   int currentState1 = digitalRead(togglePin1);
@@ -136,7 +138,9 @@ long now = millis();
   Serial.println(statusLampu2);
   Serial.println(statusLampu3);
   Serial.println(statusLampu4);
-  delay(50);
+  delay(1000);
+  Serial.println("");
+  Serial.flush();
   //kirim perintah ke node.js untuk dieksekusi
   //char perintah[50];
   //sprintf(perintah, "SPL1%dL2%dL3%dL4%dE", previousState1, previousState2, previousState3, previousState4);
